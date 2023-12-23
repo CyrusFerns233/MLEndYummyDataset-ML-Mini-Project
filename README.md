@@ -1,5 +1,19 @@
 # MLEndYummyDataset-ML-Mini-Project
 
+# MLEnd Yummy Dataset Contribution
+
+I participated in the MLEnd Yummy Dataset project, enriching the dataset with images of 16 distinct dishes I enjoyed. The process involved capturing top-view photos, utilizing Yummy cards, and saving each image with a specific filename, adhering to the standardized format. After savoring the meals, I enriched the photos by populating a spreadsheet with essential details such as dish name, ingredients, and rating. The submission required zipping the images and the spreadsheet, ensuring compliance with the specified guidelines. This collaborative initiative aims to create a diverse and publicly accessible dataset for global learning and research. It was an enjoyable experience exploring different cuisines and contributing to a valuable resource for the community. Let's continue building this amazing dataset! 🍲📸
+
+## Contribution Recap
+
+1. **Photo Capture:** Captured images of various dishes from a top-view perspective.
+2. **Yummy Cards:** Used Yummy cards for consistency, placing one on the left side of each dish.
+3. **Filename Standardization:** Saved images with a standardized filename format.
+4. **Spreadsheet Enrichment:** Filled out the provided spreadsheet with detailed attributes.
+5. **Submission:** Zipped the 16 images and the spreadsheet, adhering to submission guidelines.
+
+Feel free to explore and contribute. The journey of making this dataset diverse and enriching continues! 🌐🍽️
+
 # MLEnd Yummy Dataset - Rice vs Chips Classifier (Basic Solution)
 
 ## Machine Learning Pipeline:
