@@ -4,7 +4,7 @@
 
 I participated in the MLEnd Yummy Dataset project, enriching the dataset with images of 16 distinct dishes I enjoyed. The process involved capturing top-view photos, utilizing Yummy cards, and saving each image with a specific filename, adhering to the standardized format. After savoring the meals, I enriched the photos by populating a spreadsheet with essential details such as dish name, ingredients, and rating. The submission required zipping the images and the spreadsheet, ensuring compliance with the specified guidelines. This collaborative initiative aims to create a diverse and publicly accessible dataset for global learning and research. It was an enjoyable experience exploring different cuisines and contributing to a valuable resource for the community. Let's continue building this amazing dataset! 🍲📸
 
-## Contribution Recap
+## Contribution Steps
 
 1. **Photo Capture:** Captured images of various dishes from a top-view perspective.
 2. **Yummy Cards:** Used Yummy cards for consistency, placing one on the left side of each dish.
@@ -14,176 +14,35 @@ I participated in the MLEnd Yummy Dataset project, enriching the dataset with im
 
 Feel free to explore and contribute. The journey of making this dataset diverse and enriching continues! 🌐🍽️
 
+### The MLEnd Yummy Dataset project encompasses two main components, each addressed in separate Jupyter notebooks: 
+
 # MLEnd Yummy Dataset - Rice vs Chips Classifier (Basic Solution)
-
-## Machine Learning Pipeline:
-
-### Data Import:
-
-The dataset was initially extensive, containing instances of various dishes. The goal of the basic component was to create a model specifically for distinguishing dishes with rice and chips. Therefore, the data was filtered to retain only rows corresponding to rice and chips dishes. Here there is a class imbalance (Majority class: Rice, Minority Class: Chips) which will be tackled in the later part of the pipeline
-
-- **Input:** MLEnd Yummy Dataset with images of various dishes and labels (3250 instances).
-- **Output:** Filtered dataset with instances of only rice and chips dishes (612 instances).
-
-### Data Preprocessing:
-
-#### Train-Test Split:
-
-Before any preprocessing, it was crucial to establish separate sets for training and testing. This division was necessary for model evaluation, allowing me to assess the model's performance on unseen data and ensure generalization.
-
-- **Input:** Filtered dataset with instances of only rice and chips dishes (612 instances).
-- **Output:** Training and testing sets containing labeled instances of rice and chips.
-
-#### Resize Images:
-
-Images in the dataset had varying dimensions, which could further hinder uniform processing. The images were resized to a size of 200 x 200 pixels. This ensured that subsequent preprocessing steps and the model itself could handle inputs of consistent dimensions.
-
-- **Input:** Images of rice and chips from the training and testing sets.
-- **Output:** Resized images with dimensions 200 x 200 pixels.
-
-#### Flatten Images:
-
-Traditional machine learning models often expect flat feature vectors as input. Flattened the resized images, originally 2D arrays, transformed them into 1D feature vectors. This step prepares the data in a format suitable for training classifiers that operate on flattened representations.
-
-- **Input:** Resized images with dimensions 200 x 200 pixels.
-- **Output:** Flattened feature vectors ready for model training.
-
-### Feature Extraction:
-
-#### GLCM Features:
-
-GLCM features were used to capture texture information in the images, which is essential for distinguishing between rice and chips dishes.
-
-- **Input:** Flattened images.
-- **Output:** GLCM features (dissimilarity, correlation) extracted from each image.
-
-### Model Building:
-
-A Random Forest Classifier was chosen due to its versatility and robustness, making it suitable for handling complex relationships in the data, particularly in the context of GLCM features.
-
-- **Input:** GLCM features.
-- **Output:** The selected Random Forest Classifier.
-
-#### Random Forest Classifier:
-
-The Random Forest Classifier is a powerful ensemble learning model that combines multiple decision trees to improve predictive accuracy and generalization.
-
-- **Input:** GLCM features.
-- **Output:** Trained Random Forest Classifier.
-
-### Model Training:
-
-The model undergoes training using the resampled training set, where the SMOTE oversampler is employed to address class imbalance. During training, the Random Forest Classifier learns patterns and relationships present in the GLCM features of rice and chips dishes.
-
-- **Input:** Training set with GLCM features (resampled using SMOTE).
-- **Output:** Trained Random Forest Classifier.
-
-### Model Evaluation:
-
-The trained model is evaluated on the same training set to assess its performance and ensure it has learned the underlying patterns effectively.
-
-- **Input:** Trained Random Forest Classifier, Training set with GLCM features.
-- **Output:** Evaluation metrics such as accuracy, confusion matrix, and classification report.
-
-### Training Set Evaluation:
-
-#### Training Accuracy:
-
-The model achieves perfect accuracy on the training set, scoring 100%. This indicates that the classifier has successfully learned the patterns and relationships present in the GLCM features of rice and chips dishes.
-
-#### Confusion Matrix:
-
-The matrix shows no misclassifications, with 374 instances correctly classified for both classes (0 and 1).
-
-#### Classification Report:
-
-Precision, recall, and f1-score for both classes are perfect, reflecting the model's ability to generalize well on the training data.
-
-### Test Set Evaluation with GLCM Features:
-
-#### Test Accuracy:
-
-The model achieves a test accuracy of approximately 71.28% on a separate set of data, indicating its ability to generalize to new, unseen instances.
-
-#### Test Confusion Matrix:
-
-The model correctly predicts 126 instances of class 1 but struggles with class 0, where only 8 instances are correctly predicted, and 12 instances are misclassified.
-
-#### Test Classification Report:
-
-The classification report provides a detailed breakdown of precision, recall, and f1-score for both classes in the test set, offering insights into the model's performance across different metrics. The report indicates that while the model performs well for class 1, it has challenges correctly predicting instances of class 0.
+The basic solution focusing on a Rice vs Chips Classifier and the advanced solution involving a Diet Category Classifier. In the basic solution, the machine learning pipeline begins with data import, preprocessing, and feature extraction, culminating in the implementation of a Random Forest Classifier. The notebook meticulously details the training, evaluation, and performance metrics, offering insights into the model's ability to distinguish between rice and chips dishes. 
 
 
 # MLEnd Yummy Dataset - Diet Category Classifier (Advanced Solution)
+The advanced solution takes a more sophisticated approach with a convolutional neural network (CNN), leveraging techniques such as hyperparameter tuning and data augmentation. The associated Jupyter notebook guides users through loading and preprocessing data, defining and compiling the CNN model, tuning hyperparameters, and training the model with augmented data. Both notebooks serve as comprehensive references, providing a transparent and reproducible overview of the entire project's methodology, from inception to model evaluation.
 
-## Advanced Machine Learning Pipeline:
+# Conclusion: Skills and ML Techniques Learned
 
-### Data Loading and Preprocessing Stage:
+Participating in the MLEnd Yummy Dataset project has been an enriching journey that significantly contributed to my skill set and understanding of various machine learning techniques. Through the process of capturing, processing, and enriching images of different dishes, I honed several valuable skills and applied sophisticated ML techniques. 
 
-- **Input:** Filepaths, labels (Diet information)
-- **Output:** Preprocessed images and their corresponding encoded labels
+## Image Processing and Dataset Enrichment Skills
 
-#### Stages:
+Working with real-world images demanded a solid grasp of image processing techniques. I learned to capture top-view photos, ensuring consistency by employing Yummy cards, and standardized naming conventions for filenames. The process of enriching images involved meticulous recording of essential attributes, including dish name, ingredients, and ratings, further refining my data annotation and documentation skills.
 
-1. Loading filepaths and labels from MLENDYD_df.
-2. Using the `load_images_from_dir` function to load and preprocess images, resizing them to the specified size (200x200), and normalizing pixel values to the range [0, 1].
-3. Encoding labels using LabelEncoder and to_categorical.
-4. Splitting the dataset into training, validation, and test sets using `train_test_split`.
+## Basic Solution: Rice vs Chips Classifier
 
-### Model Definition and Compilation Stage:
+In developing the basic solution for distinguishing between rice and chips dishes, I delved into the fundamentals of data preprocessing. Techniques such as train-test splitting, image resizing, and flattening were essential for preparing data suitable for traditional machine learning models. Feature extraction using GLCM features provided valuable insights into capturing texture information, and the implementation of a Random Forest Classifier enhanced my understanding of ensemble learning models.
 
-- **Input:** Preprocessed images and encoded labels
-- **Output:** Compiled CNN model
+## Advanced Solution: Diet Category Classifier
 
-#### Stages:
+The advanced solution, focusing on classifying diet categories (vegetarian, non-vegetarian, vegan), pushed the boundaries of my machine learning expertise. Loading and preprocessing images for a convolutional neural network (CNN), hyperparameter tuning, and leveraging data augmentation techniques highlighted the importance of adapting to different model architectures and optimizing for performance. The inclusion of a learning rate reduction callback demonstrated the significance of dynamic adjustments during training.
 
-1. Defining a more complex CNN model with additional convolutional layers, dropout, and batch normalization for better feature extraction.
-2. Compiling the model with the Adam optimizer, categorical crossentropy loss, and accuracy as the metric.
+## Transferable Skills
 
-### Hyperparameter Tuning Stage:
+Beyond the technical aspects, this project also nurtured transferable skills such as effective collaboration, adherence to submission guidelines, and the ability to contribute meaningfully to a shared dataset. Understanding the importance of data privacy and submission integrity were crucial takeaways, emphasizing the ethical considerations in handling real-world datasets.
 
-- **Input:** Compiled CNN model, training data, and labels
-- **Output:** Fine-tuned model
+In conclusion, the MLEnd Yummy Dataset project has been a comprehensive and hands-on learning experience, blending image processing, traditional machine learning, and deep learning techniques. This project has equipped me with a diverse skill set and a deeper understanding of practical challenges in working with real-world datasets, setting a solid foundation for future endeavors in machine learning and data science. The continuous growth of this dataset is a testament to the collaborative spirit of the community and the collective effort to create a valuable resource for global learning and research. 🚀🍽️
 
-#### Stages:
 
-1. Using techniques like random search to tune hyperparameters such as learning rate, batch size, and model architecture.
-2. Optimizing the model based on validation performance.
-
-### Data Augmentation Stage:
-
-- **Input:** Training images and labels
-- **Output:** Augmented training data
-
-#### Stages:
-
-1. Using the `ImageDataGenerator` from Keras to perform data augmentation.
-2. Augmenting the training data with various transformations like rotation, width and height shifts, shear, zoom, horizontal and vertical flips, and fill mode.
-
-### Model Training Stage:
-
-- **Input:** Augmented training data and labels, validation data, and callbacks
-- **Output:** Trained model and training history
-
-#### Stages:
-
-1. Training the model using the augmented training data and labels from the data augmentation stage.
-2. Using a learning rate reduction callback (`ReduceLROnPlateau`) to adjust the learning rate during training based on the validation loss.
-
-### Plotting Training History Stage:
-
-- **Input:** Training history
-- **Output:** Visualization of training and validation metrics over epochs
-
-#### Stages:
-
-1. Plotting training accuracy, validation accuracy, training loss, and validation loss over epochs using the `plot_training_history` function.
-
-### Model Evaluation Stage:
-
-- **Input:** Test data and labels
-- **Output:** Test accuracy
-
-#### Stages:
-
-1. Evaluating the trained model on the test set to obtain the test accuracy.
